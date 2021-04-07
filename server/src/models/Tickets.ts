@@ -1,22 +1,22 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
 @Entity('tickets')
 class Ticket {
   @PrimaryColumn()
-  readonly id: string = '';
+  readonly id!: string;
 
   @Column()
-  name: string = '';
+  title!: string;
 
   @Column()
-  title: string = '';
-
-  @Column()
-  description: string = '';
+  description!: string;
 
   @CreateDateColumn()
   created_at!: Date;
+  
+  @UpdateDateColumn()
+  updated_at!: Date;
 
   constructor() {
     if(!this.id) {

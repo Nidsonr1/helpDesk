@@ -21,31 +21,22 @@ export class CreateTicketTable1617052669586 implements MigrationInterface {
 						type: 'varchar'
 					},
 					{
-						name: 'user_id',
-						type: 'uuid'
-					},
-					{
 						name: 'created_at',
 						type: 'timestamp',
 						default: 'now()'
-					}
-				],
-				foreignKeys: [
+					},
 					{
-					name: "FKUser",
-					referencedTableName: "users",
-					referencedColumnNames: ['id'],
-					columnNames:['user_id'],
-					onDelete: 'CASCADE',
-					onUpdate: 'CASCADE'
+						name: 'updated_at',
+						type: 'timestamp',
+						default: 'now()',
+						onUpdate: ''
 					}
 				]
 			})
 		);
-	}
+	};
 
 	public async down(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.dropTable('tickets');
 	}
-
-}
+};
